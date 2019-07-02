@@ -1,0 +1,38 @@
+<table class="table table-bordered table-striped datatable" id="table-2">
+    <thead>
+        <tr>
+            <th><?php echo get_phrase('data');?></th>
+            <th><?php echo get_phrase('pacient');?></th>
+            <th><?php echo get_phrase('doctor');?></th>
+            <th><?php echo get_phrase('optiuni');?></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($requested_appointment_info as $row) { ?>   
+            <tr>
+                <td><?php echo date("d M, Y -  H:i", $row['timestamp']); ?></td>
+                <td>
+                    <?php $name = $this->db->get_where('patient' , array('patient_id' => $row['patient_id'] ))->row()->name;
+                        echo $name;?>
+                </td>
+                <td>
+                    <?php $name = $this->db->get_where('doctor' , array('doctor_id' => $row['doctor_id'] ))->row()->name;
+                        echo $name;?>
+                </td>
+                <td>
+                    <a onclick="showAjaxModal('<?php echo site_url('modal/popup/approve_appointment/'.$row['appointment_id']);?>');"
+                        class="btn btn-primary btn-sm">
+                            <i class="fa fa-check"></i> &nbsp;
+                            <?php echo get_phrase('approbat');?>
+                    </a>
+                    <a onclick="confirm_modal('<?php echo site_url('doctor/appointment_requested/delete/'.$row['appointment_id']); ?>')"
+                        class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash-o"></i> &nbsp;
+                        <?php echo get_phrase('sterge');?>
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
