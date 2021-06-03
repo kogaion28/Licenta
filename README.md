@@ -1,4 +1,4 @@
-# Licenta
+# Licenta v1.0
 
 Framework:Codeigniter php https://codeigniter.com/
  
