@@ -1,4 +1,6 @@
 # Licenta
+
+Framework:Codeigniter php https://codeigniter.com/
  
 Install Xampp 
 
